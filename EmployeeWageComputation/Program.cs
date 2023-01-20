@@ -10,7 +10,19 @@ namespace EmployeeWageComputation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to EmployeeWageComputation");
+            int isPresent = 1;
+            Console.WriteLine("Welcome to EmployeeWage Computation");
+            //UC1 - EmployeeAttendance
+            Random random = new Random();
+            int empAttendance = random.Next(0,2);
+            if(empAttendance == isPresent)
+            {
+                Console.WriteLine("Emplouee is present");
+            }
+            else
+            {
+                Console.WriteLine("Employee is Absent");
+            }
             Console.ReadLine();
         }
     }
