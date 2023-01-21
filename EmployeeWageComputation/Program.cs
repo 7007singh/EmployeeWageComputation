@@ -11,6 +11,8 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
             int isPresent = 1;
+            int empHrs = 0;
+            int empRatePerHr = 20;
             Console.WriteLine("Welcome to EmployeeWage Computation");
             //UC1 - EmployeeAttendance
             Random random = new Random();
