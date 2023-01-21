@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
@@ -16,26 +12,26 @@ namespace EmployeeWageComputation
             int empHrs = 0, empWage = 0;
 
             Console.WriteLine("Welcome to EmployeeWage Computation");
-            //UC3 - CalculateDailyWa
+
+            //UC4 - CalculateDailyWaUsingSwitchCase
             Random random = new Random();
             int empAttendance = random.Next(0,3);
-            if(empAttendance == FULL_TIME)
+            switch(empAttendance)
             {
-                Console.WriteLine("Emplouee is present");
-                empHrs = 8;
-            }
-            else if(empAttendance == PART_TIME)
-            {
-                Console.WriteLine("Full Time Emplouee is present");
-                empHrs = 4;
-            }
-            else
-            {
-                Console.WriteLine("Part Time Employee is Absent");
-                //empHrs = 0;
+                case FULL_TIME:
+                    Console.WriteLine("Full Time Employee is Present");
+                    empHrs = 8;
+                    break; 
+                case PART_TIME:
+                    Console.WriteLine("Paart Time Employee is Present");
+                    empWage = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    break;
             }
             empWage = empHrs * EMP_RATE_PER_HR;
-            Console.WriteLine("Employee Wage:{0}" + empWage);
+            Console.WriteLine("Employee Wage:{0}", + empWage);
             Console.ReadLine();
         }
     }
