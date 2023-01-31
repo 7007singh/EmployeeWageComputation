@@ -4,20 +4,26 @@ namespace EmployeeWageComputation
 {
     internal class Program
     {
+        public const int FULL_TIME = 1;
+        public const int PART_TIME = 2;
+        public const int MAX_WORKING_DAYS = 20;
+        public const int MAX_WORKING_HRS = 100;
+        public const int EMP_RATE_PER_HR = 20;
         static void Main(string[] args)
         {
-            const int FULL_TIME = 1;
-            const int PART_TIME = 2;
-            const int MAX_WORKING_DAYS = 20;
-            const int MAX_WORKING_HRS = 100;
-            const int EMP_RATE_PER_HR = 20;
+            ComputeEmpWage();
+            Console.ReadLine();
+        }
+        
+        public static void ComputeEmpWage()
+        {
             int empHrs = 0, empWage = 0, day = 1, totalWage = 0, totalHrs = 0;
 
             Console.WriteLine("Welcome to EmployeeWage Computation");
 
             //UC5 - CalculateWageForAMonth
             Random random = new Random();
-            while(day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_HRS)
+            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_HRS)
             {
                 int empAttendance = random.Next(0, 3);
                 switch (empAttendance)
@@ -40,8 +46,7 @@ namespace EmployeeWageComputation
                 day++;
                 totalHrs += empWage;
             }
-            Console.WriteLine("Total Employee Wage for {0} days:{1} and total working hours {2}", (day-1), totalWage, totalHrs);
-            Console.ReadLine();
+            Console.WriteLine("Total Employee Wage for {0} days:{1} and total working hours {2}", (day - 1), totalWage, totalHrs);
         }
     }
 }
