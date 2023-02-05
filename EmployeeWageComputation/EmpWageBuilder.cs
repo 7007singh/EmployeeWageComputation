@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EmployeeWageComputation
 {
@@ -7,28 +8,27 @@ namespace EmployeeWageComputation
         public const int FULL_TIME = 1;
         public const int PART_TIME = 2;
 
-        CompanyDetails[] companies;
+        List<CompanyDetails> list;
         int numberOfCompany = 0;
         
         public EmpWageBuilder()
         {
-            companies = new CompanyDetails[3];
+            list = new List<CompanyDetails>();
         }
 
         public void AddCompanyDetail(string company, int maxWorkingDay, int maxWorkingHrs, int empRatePerHrs)
         {
             CompanyDetails companyDetails = new CompanyDetails(company, maxWorkingDay, maxWorkingHrs, empRatePerHrs);
-            companies[numberOfCompany] = companyDetails;
-            numberOfCompany++;
+            list.Add(companyDetails);
         }
 
         public void IterateOverCompanies()
         {
-            for (int i = 0; i < companies.Length; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                int totalWage = ComputeEmpWage(companies[i]);
-                companies[i].SetTotalWage(totalWage);
-                Console.WriteLine(companies[i]);
+                int totalWage = ComputeEmpWage(list[i]);
+                list[i].SetTotalWage(totalWage);
+                Console.WriteLine(list[i]);
             }
         }
         static void Main(string[] args)
