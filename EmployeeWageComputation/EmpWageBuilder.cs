@@ -9,17 +9,20 @@ namespace EmployeeWageComputation
         public const int PART_TIME = 2;
 
         List<CompanyDetails> list;
-        int numberOfCompany = 0;
+        Dictionary<string, CompanyDetails> keyValues;
+        //int numberOfCompany = 0;
         
         public EmpWageBuilder()
         {
             list = new List<CompanyDetails>();
+            keyValues = new Dictionary<string, CompanyDetails>();
         }
 
         public void AddCompanyDetail(string company, int maxWorkingDay, int maxWorkingHrs, int empRatePerHrs)
         {
             CompanyDetails companyDetails = new CompanyDetails(company, maxWorkingDay, maxWorkingHrs, empRatePerHrs);
             list.Add(companyDetails);
+            keyValues.Add(company, companyDetails);
         }
 
         public void IterateOverCompanies()
@@ -31,6 +34,12 @@ namespace EmployeeWageComputation
                 Console.WriteLine(list[i]);
             }
         }
+
+        public void GetTotalWageBasedOnCompany(string comp)
+        {
+            Console.WriteLine("Total Wage for {0} is {1}: ", comp, keyValues[comp].totalWage);
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to EmployeeWage Computation");
@@ -39,6 +48,7 @@ namespace EmployeeWageComputation
             builder.AddCompanyDetail("Google", 24, 70, 20);
             builder.AddCompanyDetail("Mirosoft", 23, 40, 40);
             builder.IterateOverCompanies();
+            builder.GetTotalWageBasedOnCompany("Google");
             Console.ReadLine();
         }
         public int ComputeEmpWage(CompanyDetails details)
